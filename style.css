@@ -1,0 +1,277 @@
+html{
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+ 
+
+.navbar {
+
+    background-color:
+
+    #142585;
+
+    display: flex;
+
+    justify-content: space-between;
+
+}
+
+ 
+
+.logo {
+
+    max-width: 70px;
+
+}
+
+ 
+
+a{
+
+    text-decoration: none;
+
+    color: white;
+
+    font-size: x-large;
+
+}
+
+.stranice {
+
+    list-style: none;
+
+    display: flex;
+
+}
+
+ 
+
+.stranice li{
+
+    margin-right: 10px;
+
+}
+
+ 
+
+body{
+
+    background-color: white;
+
+}
+
+ 
+
+.container-pocetna{
+
+    background-color: #EEEEEE;
+
+    text-align: center;
+
+}
+
+ 
+
+.container-about{
+
+    text-align: center;
+
+}
+
+.container-pocetna h1{
+
+    font-size: 5em;
+
+}
+
+ 
+
+.container-pocetna p{
+
+    padding-bottom: 15px;
+
+}
+
+h1{
+
+    color: #c73e11;
+
+}
+
+ 
+
+h2{
+
+    font-size: xx-large;
+
+    color: #142585;
+
+}
+
+h3{
+
+    font-size: x-large;
+
+    color: #142585;
+
+}
+
+ 
+
+p, label{
+
+    color: grey;
+
+    font-size: large;
+
+}
+
+ 
+
+label, input, textarea {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+}
+
+ 
+
+button {
+
+    background-color:  #142585;
+
+    color: white;
+
+    padding: 10px 20px;
+
+    border: none;
+
+}
+
+ 
+
+.svetlija-boja-dugmeta{
+
+    background-color: #a7b2bd;
+
+    color: white;
+
+    padding: 10px 20px;
+
+    border: none;
+
+    margin-bottom: 10px;
+
+}
+
+ 
+
+.row-padding{
+
+    display: flex;
+
+}
+
+ 
+
+.pasus {
+
+    flex: 1;
+
+    padding: 10px;
+
+    margin: 5px;
+
+  }
+
+ 
+
+main{
+
+    max-width: 1500px;
+
+    width: 100%;
+
+    display: inline-block;
+
+    justify-content: center;
+
+}
+
+ 
+
+footer{
+
+    text-align: center;
+
+}
+
+ 
+
+@media (max-width: 768px) {
+
+    .navbar{
+
+        width: 100%;
+
+    }
+
+    .stranice{
+
+        flex-direction: column;
+
+    }
+
+ 
+
+    .logo{
+
+        width: fit-content;
+
+    }
+
+    .pasus {
+
+        width: 100%;
+
+        flex: 1;
+
+        padding: 10px;
+
+        margin: 5px;
+
+    }
+
+    .row-padding {
+
+        flex-direction: column;
+
+      }
+
+ 
+
+    .forma input, textarea{
+
+        width: 100%;
+
+    }
+
+   
+
+    .container-pocetna h1{
+
+        font-size: 3em;
+
+    }
+
+      a{
+
+        font-size: smaller;
+
+      }
+
+}
