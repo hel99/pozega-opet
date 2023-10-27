@@ -1,169 +1,202 @@
-html{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+html {
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-body{
-    background-color: white;
-    padding: 0;
-    margin: 0;
-    width: 100%;
+body {
+	background-color: white;
+	padding: 0;
+	margin: 0;
+	width: 100%;
 }
 
-main{
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 0 20px;
-    width: 100%;
-    justify-content: center;
-    height: 100vh;
+main {
+	max-width: 1500px;
+	margin: 0 auto;
+	padding: 0 20px;
+	width: 100%;
+	justify-content: center;
+	height: 100vh;
 }
 
 .navbar {
-    background-color:
-    #142585;
-    display: flex;
-    justify-content: space-between;
+	background-color: #142585;
+	display: flex;
+	justify-content: space-between;
 }
 
 .logo {
-    max-width: 70px;
+	max-width: 70px;
 }
- 
 
-a{
-    text-decoration: none;
-    color: white;
-    font-size: x-large;
+a {
+	text-decoration: none;
+	color: white;
+	font-size: x-large;
 }
 
 .stranice {
-    list-style: none;
-    display: flex;
+	list-style: none;
+	display: flex;
 }
 
- 
-
-.stranice li{
-    margin-right: 10px;
+.stranice li {
+	margin-right: 10px;
 }
 
-
-
-.container-pocetna{
-    background-color: #EEEEEE;
-    text-align: center;
+.container-pocetna {
+	background-color: #eeeeee;
+	text-align: center;
 }
 
-.container-about{
-    text-align: center;
+.container-about {
+	text-align: center;
 }
 
-.container-pocetna h1{
-    font-size: 5em;
+.container-pocetna h1 {
+	font-size: 5em;
 }
 
-.container-pocetna p{
-    padding-bottom: 15px;
+.container-pocetna p {
+	padding-bottom: 15px;
 }
 
-h1{
-    color: #c73e11;
-} 
-
-h2{
-    font-size: xx-large;
-    color: #142585;
+h1 {
+	color: #c73e11;
 }
 
-h3{
-    font-size: x-large;
-    color: #142585;
+h2 {
+	font-size: xx-large;
+	color: #142585;
 }
 
- 
-
-p, label{
-    color: grey;
-    font-size: large;
-    padding-right: 20px;
+h3 {
+	font-size: x-large;
+	color: #142585;
 }
 
-label, input, textarea {
-    display: block;
-    margin-bottom: 10px;
+p,
+label {
+	color: grey;
+	font-size: large;
+	padding-right: 20px;
+}
+
+label,
+input,
+textarea {
+	display: block;
+	margin-bottom: 10px;
 }
 
 button {
-    background-color:  #142585;
-    color: white;
-    padding: 10px 20px;
-    border: none;
+	background-color: #142585;
+	color: white;
+	padding: 10px 20px;
+	border: none;
 }
 
-.svetlija-boja-dugmeta{
-    background-color: #a7b2bd;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    margin-bottom: 10px;
+.svetlija-boja-dugmeta {
+	background-color: #a7b2bd;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	margin-bottom: 10px;
 }
 
-.row-padding{
-    display: flex;
+.row-padding {
+	display: flex;
 }
 
 .pasus {
-    flex: 1;
-    padding: 10px;
-    margin: 5px;
-  }
-
-
-footer{
-    text-align: center;
+	flex: 1;
+	padding: 10px;
+	margin: 5px;
 }
 
+footer {
+	text-align: center;
+}
+
+.hamburger {
+	z-index: 3;
+
+	cursor: -moz-grabbing;
+	display: none;
+}
 @media (max-width: 768px) {
+	.navbar {
+		width: 100%;
+	}
 
-    .navbar{
-        width: 100%;
-    }
+	.hamburger {
+		display: block;
+	}
 
-    .stranice{
-        flex-direction: column;
-    }
+	.stranice {
+		flex-direction: column;
+		display: none;
+	}
 
-    .logo{
-        width: fit-content;
-    }
+	.logo {
+		width: fit-content;
+	}
 
-    .pasus {
-        width: 100%;
-        flex: 1;
-        padding: 10px;
-        margin: 5px;
-    }
+	.pasus {
+		width: 100%;
+		flex: 1;
+		padding: 10px;
+		margin: 5px;
+	}
 
-    .row-padding {
-        flex-direction: column;
-      }
+	.row-padding {
+		flex-direction: column;
+	}
 
-    .forma input, textarea{
-        width: 100%;
-    }
+	.forma input,
+	textarea {
+		width: 100%;
+	}
 
-    .container-pocetna h1{
-        font-size: 3em;
-    }
+	.container-pocetna h1 {
+		font-size: 3em;
+	}
 
-      a{
-        font-size: smaller;
-      }
+	a {
+		font-size: smaller;
+	}
 
+	.container-content {
+		padding: 20px;
+	}
+}
 
-      .container-content {
-padding: 20px;
+.menu {
+	margin: 0;
+	position: fixed;
+	transform: translateY(-100%);
+	transition: transform 0.2s;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 2;
+	background: black;
+}
 
-      }
+.showMenu {
+	transform: translateY(0);
+}
+.closeButton {
+	display: none;
+	z-index: 3;
+	cursor: -moz-grabbing;
+}
 
+.hideHamburger,
+hideCloseButton {
+	display: none;
+}
+
+.showCloseIcon {
+	display: block;
 }
