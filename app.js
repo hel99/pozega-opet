@@ -1,3 +1,11 @@
+fetch("https://jsonplaceholder.type.com/todos/1").then(response =>{
+if(response.ok){
+	return response.json();
+} else{
+	throw new Error("interner konekcija nije u redu");
+}
+});
+
 const menu = document.querySelector(".menu");
 const hamburger = document.querySelector(".hamburger");
 const closeButton = document.querySelector(".closeButton");
