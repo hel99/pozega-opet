@@ -1,9 +1,25 @@
-fetch("https://jsonplaceholder.type.com/todos/1").then(response =>{
-if(response.ok){
-	return response.json();
-} else{
-	throw new Error("interner konekcija nije u redu");
+// s
+"use strict";
+async function asinhronaFunkcija(number) {
+	try {
+		const response = await fetch(
+			`https://jsonplaceholder.typicode.com/todos/${number}`
+		);
+
+		if (!response.ok) {
+			throw new Error(`Http error: ${response.status}`);
+		}
+
+		const data = await response.json();
+		return data;
+	} catch (error) {
+		console.error("Nesto je poslo po zlu:", error);
+	}
 }
+
+const todos2 = asinhronaFunkcija(2);
+finalanRezultodos2tat.then((data) => {
+	console.log(data);
 });
 
 const menu = document.querySelector(".menu");
