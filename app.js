@@ -1,4 +1,4 @@
-fetch("https://jsonplaceholder.type.com/todos/1").then(response =>{
+fetch("https://jsonplaceholder.typicode.com/todos/1").then(response =>{
 if(response.ok){
 	return response.json();
 } else{
