@@ -1,8 +1,28 @@
+fetch("https://jsonplaceholder.typicode.com/todos/1").then(response =>{
+if(response.ok){
+	return response.json();
+} else{
+	throw new Error("interner konekcija nije u redu");
+}
+});
+
 const menu = document.querySelector(".menu");
 const hamburger = document.querySelector(".hamburger");
 const closeButton = document.querySelector(".closeButton");
 const footer = document.querySelector("footer");
 let trenutnaGodina = new Date().getFullYear();
+var popupWindow = document.getElementById("popupWindow");
+var closePopupButton = document.getElementById("closePopupButton");
+
+function showPopup() {
+    popupWindow.style.display = "block";
+}
+
+function closePopup() {
+    popupWindow.style.display = "none";
+}
+
+setTimeout(showPopup, 5000);
 
 footer.textContent = `© ${trenutnaGodina} Požega`;
 
@@ -20,3 +40,4 @@ function otvoriMenu() {
 
 hamburger.addEventListener("click", otvoriMenu);
 closeButton.addEventListener("click", otvoriMenu);
+closePopupButton.addEventListener("click", closePopup);

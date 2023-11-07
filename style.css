@@ -145,7 +145,24 @@ footer{
 	padding: 20px;
 	margin: 10px;
 }
-
+#popupWindow {
+	position: fixed;
+	justify-content: center;
+	width: 300px;
+	height: 150px;
+	background: white;
+	border: 1px solid rgb(117, 115, 115);
+	padding: 10px;
+	margin: auto;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 5;
+	display: none;
+    text-align: center;
+  } 
+ 
 @media (max-width: 768px) {
 	.navbar {
 		width: 100%;
@@ -205,6 +222,24 @@ footer{
 	.container-content {
 		padding: 20px;
 	}
+
+	#popupWindow {
+		font-size: smaller;
+		position: fixed;
+		justify-content: center;
+		width: 45%;
+		height: 30%;
+		background: white;
+		border: 1px solid rgb(117, 115, 115);
+		padding: 10px;
+		margin: auto;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 10;
+		display: none;
+	  } 
 }
 
 .showMenu {
