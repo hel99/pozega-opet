@@ -13,6 +13,8 @@ const footer = document.querySelector("footer");
 let trenutnaGodina = new Date().getFullYear();
 var popupWindow = document.getElementById("popupWindow");
 var closePopupButton = document.getElementById("closePopupButton");
+var newPopupWindow = document.getElementById("newPopupWindow");
+var closeNewPopupButton = document.getElementById("closeNewPopupButton");
 
 function showPopup() {
     popupWindow.style.display = "block";
@@ -20,6 +22,16 @@ function showPopup() {
 
 function closePopup() {
     popupWindow.style.display = "none";
+}
+document.getElementById("buttonNo").addEventListener("click", function () {
+    window.open("https://www.lazalazarevic.rs/", "_blank");
+});
+document.getElementById("buttonYes").addEventListener("click", function () {
+		popupWindow.style.display = "none";
+		newPopupWindow.style.display = "block";
+});
+function closeNewPopup() {
+    newPopupWindow.style.display = "none";
 }
 
 setTimeout(showPopup, 5000);
@@ -41,3 +53,4 @@ function otvoriMenu() {
 hamburger.addEventListener("click", otvoriMenu);
 closeButton.addEventListener("click", otvoriMenu);
 closePopupButton.addEventListener("click", closePopup);
+closeNewPopupButton.addEventListener("click", closeNewPopup);
