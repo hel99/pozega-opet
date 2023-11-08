@@ -1,82 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Kontakt</title>
-</head>
-<body>
-    <header>
-        <nav class="navbar">
-            <img class="logo" src="images/logo-pozega.png" alt="Logo" class="logo">
-            <ul class="stranice">
-                <li><a href="index.html">POČETNA</a></li>
-                <li><a href="about.html">O POŽEGI</a></li>
-                <li><a href="contact.html">KONTAKT</a></li>
-            </ul>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Kontakt</title>
+	</head>
+	<body>
+		<header>
+			<nav class="navbar">
+				<img
+					class="logo"
+					src="images/logo-pozega.png"
+					alt="Logo"
+					class="logo"
+				/>
+				<ul class="stranice">
+					<li><a href="index.html">POČETNA</a></li>
+					<li><a href="about.html">O POŽEGI</a></li>
+					<li><a href="contact.html">KONTAKT</a></li>
+				</ul>
 
-            <ul class="menu">
-                <li><a href="index.html">POČETNA</a></li>
-                <li><a href="about.html">O POŽEGI</a></li>
-                <li><a href="contact.html">KONTAKT</a></li>
-            </ul>
+				<ul class="menu">
+					<li><a href="index.html">POČETNA</a></li>
+					<li><a href="about.html">O POŽEGI</a></li>
+					<li><a href="contact.html">KONTAKT</a></li>
+				</ul>
 
-            <button class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-            <button class="closeButton">
-                <span class="close">&times;</span>
-            </button>
+				<button class="hamburger">
+					<span class="bar"></span>
+					<span class="bar"></span>
+					<span class="bar"></span>
+				</button>
+				<button class="closeButton">
+					<span class="close">&times;</span>
+				</button>
+			</nav>
+		</header>
+		<div class="forma">
+			<main>
+				<div id="popupWindow">
+					<h1>Je l' nam dobar sajt?</h1>
+					<button id="closePopupButton">&times;</button>
+					<button id="buttonYes">Da</button>
+					<button id="buttonNo">Ne</button>
+				</div>
+				<div id="newPopupWindow">
+					<h1>Hvala, znamo.</h1>
+					<button id="closeNewPopupButton">&times;</button>
+				</div>
+				<h2>Kontakt</h2>
+				<p>
+					Opštinska uprava Požega <br />
+					Trg Slobode 9 <br />31210 Požega, Srbija <br />Telefoni centrala:
+					031/ 3816-401, 3816-257, 3816-468 <br />Faks: 031/ 811-287
+					<br />opstina@pozega.ls.gov.rs
+				</p>
 
+				<form method="POST" target="_blank">
+					<label for="ime">Vaše ime:</label>
+					<input
+						type="text"
+						id="ime"
+						name="ime"
+						size="50"
+						onchange="onInputChange(event)"
+					/>
+					<label for="email">Email adresa:</label>
+					<input type="text" id="email" name="email" size="50" />
+					<label for="naslov">Naslov:</label>
+					<input type="text" id="naslov" name="naslov" size="50" />
+					<label for="poruka">Poruka:</label>
+					<input type="poruka" id="poruka" name="poruka" size="50" />
 
+					<button
+						disabled="isDisabled"
+						onclick="saveData()"
+						id="submitbutton"
+					>
+						Pošalji
+					</button>
+				</form>
+			</main>
+		</div>
+		<footer>
+			<p class="footer"></p>
+		</footer>
 
-
-        </nav>
-    </header>
-    <div class="forma">
-    <main>
-        <div id="popupWindow">
-            <h1>Je l' nam dobar sajt?</h1>
-            <button id="closePopupButton">&times;</button>
-            <button id="buttonYes">Da</button>
-            <button id="buttonNo">Ne</button>
-        </div>
-        <div id="newPopupWindow">
-            <h1>Hvala, znamo.</h1>
-            <button id="closeNewPopupButton">&times;</button>
-        </div>
-        <h2>Kontakt</h2>
-        <p>Opštinska uprava Požega
-           <br> Trg Slobode 9
-            <br>31210 Požega, Srbija
-            <br>Telefoni centrala: 031/ 3816-401, 3816-257, 3816-468
-            <br>Faks: 031/ 811-287
-            <br>opstina@pozega.ls.gov.rs</p>
-
-        <form action="">
-            <label for="ime">Vaše ime:</label>
-            <input type="text" id="ime" name="ime" size="50">
-            <label for="email">Email adresa:</label>
-            <input type="text" id="email" name="email" size="50">
-            <label for="naslov">Naslov:</label>
-            <input type="text" id="naslov" name="naslov" size="50">
-            <label for="poruka">Poruka:</label>
-            <input type="poruka" id="poruka" name="poruka" size="50">
-                
-                
-                <button onclick="saveData()">Pošalji</button>
-                
-        </form>
-    </main>
-    </div>
-    <footer>
-        <p class="footer"></p>
-    </footer>
-
-    <script src="./app.js"></script>
-
-</body>
+		<script src="./app.js"></script>
+	</body>
 </html>
