@@ -15,6 +15,7 @@ var popupWindow = document.getElementById("popupWindow");
 var closePopupButton = document.getElementById("closePopupButton");
 var newPopupWindow = document.getElementById("newPopupWindow");
 var closeNewPopupButton = document.getElementById("closeNewPopupButton");
+var formData={};
 
 function showPopup() {
     popupWindow.style.display = "block";
@@ -34,7 +35,7 @@ function closeNewPopup() {
     newPopupWindow.style.display = "none";
 }
 
-setTimeout(showPopup, 5000);
+setTimeout(showPopup, 30000);
 
 footer.textContent = `© ${trenutnaGodina} Požega`;
 
@@ -48,6 +49,23 @@ function otvoriMenu() {
 		hamburger.classList.add("hideHamburger");
 		closeButton.classList.add("showCloseButton");
 	}
+}
+
+function saveData(){
+var ime = document.getElementById("ime").value;
+var email = document.getElementById("email").value;
+var naslov = document.getElementById("naslov").value;
+var poruka = document.getElementById("poruka").value;
+
+if(ime && email && naslov && poruka){
+formData.ime = ime;
+formData.email = email;
+formData.naslov = naslov;
+formData.poruka = poruka;
+alert("Pitanje je poslato.");
+} else {
+	alert("Molimo vas da popunite sva polja forme.");
+}
 }
 
 hamburger.addEventListener("click", otvoriMenu);
