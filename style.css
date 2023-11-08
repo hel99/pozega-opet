@@ -128,8 +128,8 @@ footer{
 .menu {
 	margin: 0;
 	position: fixed;
-	transform: translateY(-100%);
-	transition: transform 0.2s;
+	transform: translateX(-100%);
+	transition: transform 0.1s;
 	top: 0;
 	right: 0;
 	left: 0;
@@ -138,12 +138,11 @@ footer{
 	background: #142585;
 	list-style: none;
 	font-size: xx-large;
-	opacity: 0.9;
+	width: 50%;
 }
 
 .menu li{
-	padding: 20px;
-	margin: 10px;
+	padding-top: 20px;
 }
 #popupWindow {
 	position: fixed;
@@ -184,6 +183,7 @@ footer{
 	display: none;
     text-align: center;
   }
+
   #closePopupButton{
 	background-color: #c73e11;
 	position: absolute;
@@ -192,6 +192,7 @@ footer{
     padding: 10px;
     cursor: pointer;
   }
+  
   #closeNewPopupButton{
 	background-color: #c73e11;
 	position: absolute;
