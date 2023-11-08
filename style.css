@@ -228,7 +228,11 @@ footer{
 	}
 
 	.forma{
-		padding: 20px 20px 20px;
+    	margin: 0;
+    	padding: 0;
+    	justify-content: center;
+    	height: 100vh;
+		width: 100%;
 	}
 
 	.input{
@@ -247,24 +251,7 @@ footer{
 		padding: 20px;
 	}
 
-	#popupWindow {
-		font-size: smaller;
-		position: fixed;
-		justify-content: center;
-		width: 45%;
-		height: 30%;
-		background: white;
-		border: 1px solid rgb(117, 115, 115);
-		padding: 10px;
-		margin: auto;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		z-index: 10;
-		display: none;
-	  } 
-	  #newPopupWindow {
+	#popupWindow, #newPopupWindow, #popupViseDetalja {
 		font-size: smaller;
 		position: fixed;
 		justify-content: center;

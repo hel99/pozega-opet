@@ -37,7 +37,7 @@ function closeNewPopup() {
     newPopupWindow.style.display = "none";
 }
 
-setTimeout(showPopup, 30000);
+setTimeout(showPopup, 3000);
 
 document.getElementById("viseDetalja").addEventListener("click", function () {
 	popupViseDetalja.style.display = "block";
