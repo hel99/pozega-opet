@@ -16,6 +16,8 @@ var closePopupButton = document.getElementById("closePopupButton");
 var newPopupWindow = document.getElementById("newPopupWindow");
 var closeNewPopupButton = document.getElementById("closeNewPopupButton");
 var formData={};
+var popupViseDetalja = document.getElementById("popupViseDetalja");
+var closeViseDetaljaPopupButton = document.getElementById("closeViseDetaljaPopupButton");
 
 function showPopup() {
     popupWindow.style.display = "block";
@@ -36,6 +38,14 @@ function closeNewPopup() {
 }
 
 setTimeout(showPopup, 30000);
+
+document.getElementById("viseDetalja").addEventListener("click", function () {
+	popupViseDetalja.style.display = "block";
+});
+
+function closePopupViseDetalja(){
+	popupViseDetalja.style.display = "none";
+}
 
 footer.textContent = `© ${trenutnaGodina} Požega`;
 
@@ -72,3 +82,4 @@ hamburger.addEventListener("click", otvoriMenu);
 closeButton.addEventListener("click", otvoriMenu);
 closePopupButton.addEventListener("click", closePopup);
 closeNewPopupButton.addEventListener("click", closeNewPopup);
+closeViseDetaljaPopupButton.addEventListener("click", closePopupViseDetalja);
