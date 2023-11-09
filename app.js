@@ -41,11 +41,16 @@ const pathName = "/index.html";
 function showPopup() {
 	if (window.location.pathname === pathName) {
 		//znaci ako je route koji mi zelimo (index.html)
-
+		if (!popupWindow.contains(buttonContainer)) {
+			//ispitamo ako ne postoji kontejner da dodamo
+			popupWindow.appendChild(buttonContainer);
+		}
+		naslovPopupa.textContent = "Je l' nam dobar sajt?"; //postavljamo inicijalni text h1
+		console.log(buttonContainer);
 		popupWindow.style.display = "block"; //prikazi popup
 
-		buttonContainer.appendChild(buttonYes); //dodaj button YES u popup
-		buttonContainer.appendChild(buttonNo); // dodaj button No u popup
+		buttonContainer.appendChild(buttonYes); //dodaj button YES u popup buttonContainer
+		buttonContainer.appendChild(buttonNo); // dodaj button No u popup buttonContainer
 
 		closePopupButton.addEventListener("click", () => {
 			popupWindow.style.display = "none";
@@ -57,7 +62,7 @@ function showPopup() {
 				//contains je metoda koja ispituje da li postoji nesto u nekom nizu i vraca boolean, cisto radi predostroznosti
 				buttonContainer.removeChild(buttonYes); // ukloni button YES u popup
 			}
-			if (buttonContainer.contains(buttonNo)) {
+			if (buttonContainer.remove(buttonNo)) {
 				buttonContainer.removeChild(buttonNo);
 			}
 			naslovPopupa.textContent = "Hvala dragi fanovi, znamo i same hehe"; //promeni se text content naslova
