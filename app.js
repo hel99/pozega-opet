@@ -19,8 +19,12 @@ var formData={};
 var popupViseDetalja = document.getElementById("popupViseDetalja");
 var closeViseDetaljaPopupButton = document.getElementById("closeViseDetaljaPopupButton");
 
+const pathName = "/index.html";
+const contactPathName = '"/contact.html"';
 function showPopup() {
-    popupWindow.style.display = "block";
+	if (window.location.pathname === pathName) {
+		popupWindow.style.display = "block";
+	}
 }
 
 function closePopup() {
@@ -39,12 +43,13 @@ function closeNewPopup() {
 
 setTimeout(showPopup, 3000);
 
-document.getElementById("viseDetalja").addEventListener("click", function () {
-	popupViseDetalja.style.display = "block";
-});
-
-function closePopupViseDetalja(){
-	popupViseDetalja.style.display = "none";
+if (document.getElementById("viseDetalja")) {
+	document.getElementById("viseDetalja").addEventListener("click", function () {
+			popupViseDetalja.style.display = "block";
+		});
+	function closePopupViseDetalja() {
+		popupViseDetalja.style.display = "none";
+	}
 }
 
 footer.textContent = `© ${trenutnaGodina} Požega`;
@@ -82,4 +87,6 @@ hamburger.addEventListener("click", otvoriMenu);
 closeButton.addEventListener("click", otvoriMenu);
 closePopupButton.addEventListener("click", closePopup);
 closeNewPopupButton.addEventListener("click", closeNewPopup);
-closeViseDetaljaPopupButton.addEventListener("click", closePopupViseDetalja);
+if (document.getElementById("viseDetalja")) {
+	closeViseDetaljaPopupButton.addEventListener("click", closePopupViseDetalja);
+}
