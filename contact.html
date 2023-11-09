@@ -56,9 +56,9 @@
             <br>Faks: 031/ 811-287
             <br>opstina@pozega.ls.gov.rs</p>
 
-        <form action="">
+        <form action="https://formspree.io/f/myyqvazj" method="POST" target="_blank">
             <label for="ime">Vaše ime:</label>
-            <input type="text" id="ime" name="ime" size="50">
+            <input type="text" id="ime" name="ime" size="50" onchange="onInputChange(event)">
             <label for="email">Email adresa:</label>
             <input type="text" id="email" name="email" size="50">
             <label for="naslov">Naslov:</label>
@@ -67,7 +67,7 @@
             <input type="poruka" id="poruka" name="poruka" size="50">
                 
                 
-                <button onclick="saveData()">Pošalji</button>
+                <button onclick="saveData()" id="submitButton">Pošalji</button>
                 
         </form>
     </main>
