@@ -13,11 +13,16 @@ const footer = document.querySelector("footer");
 let trenutnaGodina = new Date().getFullYear();
 const popupWindow = document.getElementById("popupWindow");
 const closePopupButton = document.getElementById("closePopupButton");
-const newPopupWindow = document.getElementById("newPopupWindow");
-const closeNewPopupButton = document.getElementById("closeNewPopupButton");
+const viseDetaljaButton = document.getElementById("viseDetalja");
+let buttonContainer = document.getElementById("buttonContainer");
+buttonContainer ? buttonContainer.classList.add("flex-container") : null;
+let naslovPopupa = document.getElementById("naslov");
+const buttonYes = document.createElement("button");
+buttonYes.textContent = "Da";
+const buttonNo = document.createElement("button");
+buttonNo.textContent = "Ne";
+
 const formData={};
-const popupViseDetalja = document.getElementById("popupViseDetalja");
-const closeViseDetaljaPopupButton = document.getElementById("closeViseDetaljaPopupButton");
 const submitButton = document.getElementById("submitButton");
 let isDisabled = true;
 let ime = "";
@@ -27,11 +32,47 @@ let poruka = "";
 
 const pathName = "/index.html";
 const contactPathName = '"/contact.html"';
+
+
 function showPopup() {
     if (window.location.pathname === pathName) {
+        if (!popupWindow.contains(buttonContainer)) {
+            popupWindow.appendChild(buttonContainer)
+        } 
+        naslovPopupa.textContent = "Je l' nam dobar sajt?";
         popupWindow.style.display = "block";
+        buttonContainer.appendChild(buttonYes);
+        buttonContainer.appendChild(buttonNo);
+        buttonContainer.style.display="flex";
+        buttonContainer.style.justifyContent="space-around";
+        closePopupButton.addEventListener("click", ()=>{
+            popupWindow.style.display = "none";
+        });
+        buttonYes.addEventListener("click", () => {
+			if (buttonContainer.contains(buttonYes)) {
+				buttonContainer.removeChild(buttonYes)
+			}
+			if (buttonContainer.contains(buttonNo)) {
+				buttonContainer.removeChild(buttonNo);
+			}
+			naslovPopupa.textContent = "Hvala, znamo.";
+        });
+        buttonNo.addEventListener("click", () => {
+			popupWindow.style.display = "none";
+			window.open("https://www.lazalazarevic.rs/", "_blank");
+		});
+        viseDetaljaButton.addEventListener("click", () => {
+            naslovPopupa.textContent = "U pripremi...";
+            buttonContainer.removeChild(buttonYes);
+            buttonContainer.removeChild(buttonNo);
+        })
     }
 }
+
+viseDetaljaButton ? viseDetaljaButton.addEventListener("click", () => {
+			showPopup();
+	  }): null;
+
 
 if (window.location.pathname === contactPathName) {
     ime = document.getElementById("ime").value;
@@ -40,30 +81,7 @@ if (window.location.pathname === contactPathName) {
     poruka = document.getElementById("poruka").value;
 }
 
-function closePopup() {
-    popupWindow.style.display = "none";
-}
-document.getElementById("buttonNo").addEventListener("click", function () {
-    window.open("https://www.lazalazarevic.rs/", "_blank");
-});
-document.getElementById("buttonYes").addEventListener("click", function () {
-        popupWindow.style.display = "none";
-        newPopupWindow.style.display = "block";
-});
-function closeNewPopup() {
-    newPopupWindow.style.display = "none";
-}
-
 setTimeout(showPopup, 3000);
-
-if (document.getElementById("viseDetalja")) {
-    document.getElementById("viseDetalja").addEventListener("click", function () {
-            popupViseDetalja.style.display = "block";
-        });
-    function closePopupViseDetalja() {
-        popupViseDetalja.style.display = "none";
-    }
-}
 
 footer.textContent = `© ${trenutnaGodina} Požega`;
 
@@ -104,8 +122,3 @@ function saveData(){
 
 hamburger.addEventListener("click", otvoriMenu);
 closeButton.addEventListener("click", otvoriMenu);
-closePopupButton.addEventListener("click", closePopup);
-closeNewPopupButton.addEventListener("click", closeNewPopup);
-if (document.getElementById("viseDetalja")) {
-    closeViseDetaljaPopupButton.addEventListener("click", closePopupViseDetalja);
-}
