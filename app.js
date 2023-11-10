@@ -1,8 +1,8 @@
 fetch("https://jsonplaceholder.typicode.com/todos/1").then(response =>{
 if(response.ok){
-	return response.json();
+    return response.json();
 } else{
-	throw new Error("interner konekcija nije u redu");
+    throw new Error("interner konekcija nije u redu");
 }
 });
 
@@ -11,75 +11,114 @@ const hamburger = document.querySelector(".hamburger");
 const closeButton = document.querySelector(".closeButton");
 const footer = document.querySelector("footer");
 let trenutnaGodina = new Date().getFullYear();
-var popupWindow = document.getElementById("popupWindow");
-var closePopupButton = document.getElementById("closePopupButton");
-var newPopupWindow = document.getElementById("newPopupWindow");
-var closeNewPopupButton = document.getElementById("closeNewPopupButton");
-var formData={};
-var popupViseDetalja = document.getElementById("popupViseDetalja");
-var closeViseDetaljaPopupButton = document.getElementById("closeViseDetaljaPopupButton");
+const popupWindow = document.getElementById("popupWindow");
+const closePopupButton = document.getElementById("closePopupButton");
+const viseDetaljaButton = document.getElementById("viseDetalja");
+let buttonContainer = document.getElementById("buttonContainer");
+buttonContainer ? buttonContainer.classList.add("flex-container") : null;
+let naslovPopupa = document.getElementById("naslov");
+const buttonYes = document.createElement("button");
+buttonYes.textContent = "Da";
+const buttonNo = document.createElement("button");
+buttonNo.textContent = "Ne";
+
+const formData={};
+const submitButton = document.getElementById("submitButton");
+let isDisabled = true;
+let ime = "";
+let email = "";
+let naslov = "";
+let poruka = "";
+
+const pathName = "/index.html";
+const contactPathName = '"/contact.html"';
+
 
 function showPopup() {
-    popupWindow.style.display = "block";
+    if (window.location.pathname === pathName) {
+        if (!popupWindow.contains(buttonContainer)) {
+            popupWindow.appendChild(buttonContainer)
+        } 
+        naslovPopupa.textContent = "Je l' nam dobar sajt?";
+        popupWindow.style.display = "block";
+        buttonContainer.appendChild(buttonYes);
+        buttonContainer.appendChild(buttonNo);
+        buttonContainer.style.display="flex";
+        buttonContainer.style.justifyContent="space-around";
+        closePopupButton.addEventListener("click", ()=>{
+            popupWindow.style.display = "none";
+        });
+        buttonYes.addEventListener("click", () => {
+			if (buttonContainer.contains(buttonYes)) {
+				buttonContainer.removeChild(buttonYes)
+			}
+			if (buttonContainer.contains(buttonNo)) {
+				buttonContainer.removeChild(buttonNo);
+			}
+			naslovPopupa.textContent = "Hvala, znamo.";
+        });
+        buttonNo.addEventListener("click", () => {
+			popupWindow.style.display = "none";
+			window.open("https://www.lazalazarevic.rs/", "_blank");
+		});
+        viseDetaljaButton.addEventListener("click", () => {
+            naslovPopupa.textContent = "U pripremi...";
+            buttonContainer.removeChild(buttonYes);
+            buttonContainer.removeChild(buttonNo);
+        })
+    }
 }
 
-function closePopup() {
-    popupWindow.style.display = "none";
-}
-document.getElementById("buttonNo").addEventListener("click", function () {
-    window.open("https://www.lazalazarevic.rs/", "_blank");
-});
-document.getElementById("buttonYes").addEventListener("click", function () {
-		popupWindow.style.display = "none";
-		newPopupWindow.style.display = "block";
-});
-function closeNewPopup() {
-    newPopupWindow.style.display = "none";
+viseDetaljaButton ? viseDetaljaButton.addEventListener("click", () => {
+			showPopup();
+	  }): null;
+
+
+if (window.location.pathname === contactPathName) {
+    ime = document.getElementById("ime").value;
+    email = document.getElementById("email").value;
+    naslov = document.getElementById("naslov").value;
+    poruka = document.getElementById("poruka").value;
 }
 
-setTimeout(showPopup, 30000);
-
-document.getElementById("viseDetalja").addEventListener("click", function () {
-	popupViseDetalja.style.display = "block";
-});
-
-function closePopupViseDetalja(){
-	popupViseDetalja.style.display = "none";
-}
+setTimeout(showPopup, 3000);
 
 footer.textContent = `© ${trenutnaGodina} Požega`;
 
 function otvoriMenu() {
-	if (menu.classList.contains("showMenu")) {
-		menu.classList.remove("showMenu");
-		hamburger.classList.remove("hideHamburger");
-		closeButton.classList.remove("showCloseButton");
-	} else {
-		menu.classList.add("showMenu");
-		hamburger.classList.add("hideHamburger");
-		closeButton.classList.add("showCloseButton");
-	}
+    if (menu.classList.contains("showMenu")) {
+        menu.classList.remove("showMenu");
+        hamburger.classList.remove("hideHamburger");
+        closeButton.classList.remove("showCloseButton");
+    } else {
+        menu.classList.add("showMenu");
+        hamburger.classList.add("hideHamburger");
+        closeButton.classList.add("showCloseButton");
+    }
+}
+
+function onInputChange(e){
+    const value = e.target.value;
+    submitButton.disabled=false;
+    if(value){
+        ime = value;
+    }
 }
 
 function saveData(){
-var ime = document.getElementById("ime").value;
-var email = document.getElementById("email").value;
-var naslov = document.getElementById("naslov").value;
-var poruka = document.getElementById("poruka").value;
-
-if(ime && email && naslov && poruka){
-formData.ime = ime;
-formData.email = email;
-formData.naslov = naslov;
-formData.poruka = poruka;
-alert("Pitanje je poslato.");
-} else {
-	alert("Molimo vas da popunite sva polja forme.");
-}
+    if(ime && email && naslov && poruka){
+        formData.ime = ime;
+        formData.email = email;
+        formData.naslov = naslov;
+        formData.poruka = poruka;
+        submitButton.disabled=false;
+        alert("Pitanje je poslato.");
+    } else {
+        alert("Molimo vas da popunite sva polja forme.");
+        isDisabled=true;
+        return;
+    }
 }
 
 hamburger.addEventListener("click", otvoriMenu);
 closeButton.addEventListener("click", otvoriMenu);
-closePopupButton.addEventListener("click", closePopup);
-closeNewPopupButton.addEventListener("click", closeNewPopup);
-closeViseDetaljaPopupButton.addEventListener("click", closePopupViseDetalja);
