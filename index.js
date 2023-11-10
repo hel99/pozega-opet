@@ -22,20 +22,8 @@ buttonYes.textContent = "Da";
 const buttonNo = document.createElement("button");
 buttonNo.textContent = "Ne";
 
-const formData={};
-const submitButton = document.getElementById("submitButton");
-let isDisabled = true;
-let ime = "";
-let email = "";
-let naslov = "";
-let poruka = "";
-
-const pathName = "/index.html";
-const contactPathName = '"/contact.html"';
-
-
 function showPopup() {
-    if (window.location.pathname === pathName) {
+    
         if (!popupWindow.contains(buttonContainer)) {
             popupWindow.appendChild(buttonContainer)
         } 
@@ -66,20 +54,12 @@ function showPopup() {
             buttonContainer.removeChild(buttonYes);
             buttonContainer.removeChild(buttonNo);
         })
-    }
+    
 }
 
 viseDetaljaButton ? viseDetaljaButton.addEventListener("click", () => {
 			showPopup();
 	  }): null;
-
-
-if (window.location.pathname === contactPathName) {
-    ime = document.getElementById("ime").value;
-    email = document.getElementById("email").value;
-    naslov = document.getElementById("naslov").value;
-    poruka = document.getElementById("poruka").value;
-}
 
 setTimeout(showPopup, 3000);
 
@@ -94,29 +74,6 @@ function otvoriMenu() {
         menu.classList.add("showMenu");
         hamburger.classList.add("hideHamburger");
         closeButton.classList.add("showCloseButton");
-    }
-}
-
-function onInputChange(e){
-    const value = e.target.value;
-    submitButton.disabled=false;
-    if(value){
-        ime = value;
-    }
-}
-
-function saveData(){
-    if(ime && email && naslov && poruka){
-        formData.ime = ime;
-        formData.email = email;
-        formData.naslov = naslov;
-        formData.poruka = poruka;
-        submitButton.disabled=false;
-        alert("Pitanje je poslato.");
-    } else {
-        alert("Molimo vas da popunite sva polja forme.");
-        isDisabled=true;
-        return;
     }
 }
 

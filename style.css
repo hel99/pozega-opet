@@ -101,7 +101,7 @@ button {
     border: none;
 }
 
-.svetlija-boja-dugmeta{
+.svetlija-boja-dugmeta, #svetlija-boja-dugmeta{
     background-color: #a7b2bd;
     color: white;
     padding: 10px 20px;
