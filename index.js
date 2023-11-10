@@ -24,54 +24,60 @@ buttonYes.textContent = "Da";
 const buttonNo = document.createElement("button");
 buttonNo.textContent = "Ne";
 function showPopup() {
-        if (!popupWindow.contains(buttonContainer)) {
-            popupWindow.appendChild(buttonContainer)
-        } 
-        naslovPopupa.textContent = "Je l' nam dobar sajt?";
-        popupWindow.style.display = "block";
-        buttonContainer.appendChild(buttonYes);
-        buttonContainer.appendChild(buttonNo);
-        buttonContainer.style.display="flex";
-        buttonContainer.style.justifyContent="space-around";
-        closePopupButton.addEventListener("click", ()=>{
-            popupWindow.style.display = "none";
-        });
-        buttonYes.addEventListener("click", () => {
-			if (buttonContainer.contains(buttonYes)) {
-				buttonContainer.removeChild(buttonYes)
-			}
-			if (buttonContainer.contains(buttonNo)) {
-				buttonContainer.removeChild(buttonNo);
-			}
-			naslovPopupa.textContent = "Hvala, znamo.";
-        });
-        buttonNo.addEventListener("click", () => {
-			popupWindow.style.display = "none";
-			window.open("https://www.lazalazarevic.rs/", "_blank");
-		});
-        viseDetaljaButton.addEventListener("click", () => {
-            naslovPopupa.textContent = "U pripremi...";
-            buttonContainer.removeChild(buttonYes);
-            buttonContainer.removeChild(buttonNo);
-        })
+	if (!popupWindow.contains(buttonContainer)) {
+		popupWindow.appendChild(buttonContainer);
+	}
+	naslovPopupa.textContent = "Je l' nam dobar sajt?";
+	popupWindow.style.display = "block";
+	buttonContainer.appendChild(buttonYes);
+	buttonContainer.appendChild(buttonNo);
+	buttonContainer.style.display = "flex";
+	buttonContainer.style.justifyContent = "space-around";
+	closePopupButton.addEventListener("click", () => {
+		popupWindow.style.display = "none";
+	});
+	buttonYes.addEventListener("click", () => {
+		if (buttonContainer.contains(buttonYes)) {
+			buttonContainer.removeChild(buttonYes);
+		}
+		if (buttonContainer.contains(buttonNo)) {
+			buttonContainer.removeChild(buttonNo);
+		}
+		naslovPopupa.textContent = "Hvala, znamo.";
+	});
+	buttonNo.addEventListener("click", () => {
+		popupWindow.style.display = "none";
+		window.open("https://www.lazalazarevic.rs/", "_blank");
+	});
+	viseDetaljaButton.addEventListener("click", () => {
+		naslovPopupa.textContent = "U pripremi...";
+		if (buttonContainer.contains(buttonYes)) {
+			buttonContainer.removeChild(buttonYes);
+		}
+		if (buttonContainer.contains(buttonNo)) {
+			buttonContainer.removeChild(buttonNo);
+		}
+	});
 }
-viseDetaljaButton ? viseDetaljaButton.addEventListener("click", () => {
+viseDetaljaButton
+	? viseDetaljaButton.addEventListener("click", () => {
 			showPopup();
-	  }): null;
+	  })
+	: null;
 setTimeout(showPopup, 3000);
 
 footer.textContent = `© ${trenutnaGodina} Požega`;
 
 function otvoriMenu() {
-    if (menu.classList.contains("showMenu")) {
-        menu.classList.remove("showMenu");
-        hamburger.classList.remove("hideHamburger");
-        closeButton.classList.remove("showCloseButton");
-    } else {
-        menu.classList.add("showMenu");
-        hamburger.classList.add("hideHamburger");
-        closeButton.classList.add("showCloseButton");
-    }
+	if (menu.classList.contains("showMenu")) {
+		menu.classList.remove("showMenu");
+		hamburger.classList.remove("hideHamburger");
+		closeButton.classList.remove("showCloseButton");
+	} else {
+		menu.classList.add("showMenu");
+		hamburger.classList.add("hideHamburger");
+		closeButton.classList.add("showCloseButton");
+	}
 }
 hamburger.addEventListener("click", otvoriMenu);
 closeButton.addEventListener("click", otvoriMenu);
