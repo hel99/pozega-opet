@@ -35,7 +35,7 @@ const contactPathName = '"/contact.html"';
 
 
 function showPopup() {
-    if (window.location.pathname === pathName) {
+    if (window.location.pathname === pathName || window.location.pathname === '/') {
         if (!popupWindow.contains(buttonContainer)) {
             popupWindow.appendChild(buttonContainer)
         } 
