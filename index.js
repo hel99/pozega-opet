@@ -23,95 +23,48 @@ const buttonYes = document.createElement("button");
 buttonYes.textContent = "Da";
 const buttonNo = document.createElement("button");
 buttonNo.textContent = "Ne";
-const buttons = document.getElementsByClassName("viseDetalja");
-const formData = {};
-const submitButton = document.getElementById("submitButton");
-let isDisabled = true;
-let ime = "";
-let email = "";
-let naslov = "";
-let poruka = "";
-
-const pathName = "/index.html";
-const contactPathName = "/contact.html";
-
-function showPopup(isClickedOnButton) {
-	if (
-		window.location.pathname === pathName ||
-		window.location.pathname === "/"
-	) {
-		if (isClickedOnButton) {
-			naslovPopupa.textContent = "U pripremi...";
-			popupWindow.style.display = "block";
-			if (buttonContainer.contains(buttonYes)) {
-				buttonContainer.removeChild(buttonYes);
-			}
-			if (buttonContainer.contains(buttonNo)) {
-				buttonContainer.removeChild(buttonNo);
-			}
-		} else {
-			if (!popupWindow.contains(buttonContainer)) {
-				popupWindow.appendChild(buttonContainer);
-			}
-
-			naslovPopupa.textContent = "Je l' nam dobar sajt?";
-			popupWindow.style.display = "block";
-			buttonContainer.appendChild(buttonYes);
-			buttonContainer.appendChild(buttonNo);
-			buttonContainer.style.display = "flex";
-			buttonContainer.style.justifyContent = "space-around";
-			closePopupButton.addEventListener("click", () => {
-				popupWindow.style.display = "none";
-			});
-
-			buttonYes.addEventListener("click", () => {
-				if (buttonContainer.contains(buttonYes)) {
-					buttonContainer.removeChild(buttonYes);
-				}
-				if (buttonContainer.contains(buttonNo)) {
-					buttonContainer.removeChild(buttonNo);
-				}
-				naslovPopupa.textContent = "Hvala, znamo.";
-			});
-			buttonNo.addEventListener("click", () => {
-				popupWindow.style.display = "none";
-				window.open("https://www.lazalazarevic.rs/", "_blank");
-			});
-		}
+function showPopup() {
+	if (!popupWindow.contains(buttonContainer)) {
+		popupWindow.appendChild(buttonContainer);
 	}
-
-	if (window.location.pathname === "/about.html") {
-		closePopupButton.addEventListener("click", () => {
-			popupWindow.style.display = "none";
-		});
-
-		for (let i = 0; i < buttons.length; i++) {
-			buttons[i].addEventListener("click", () => {
-				naslovPopupa.textContent = "U pripremi...";
-				popupWindow.style.display = "block";
-			});
+	naslovPopupa.textContent = "Je l' nam dobar sajt?";
+	popupWindow.style.display = "block";
+	buttonContainer.appendChild(buttonYes);
+	buttonContainer.appendChild(buttonNo);
+	buttonContainer.style.display = "flex";
+	buttonContainer.style.justifyContent = "space-around";
+	closePopupButton.addEventListener("click", () => {
+		popupWindow.style.display = "none";
+	});
+	buttonYes.addEventListener("click", () => {
+		if (buttonContainer.contains(buttonYes)) {
+			buttonContainer.removeChild(buttonYes);
 		}
-	}
+		if (buttonContainer.contains(buttonNo)) {
+			buttonContainer.removeChild(buttonNo);
+		}
+		naslovPopupa.textContent = "Hvala, znamo.";
+	});
+	buttonNo.addEventListener("click", () => {
+		popupWindow.style.display = "none";
+		window.open("https://www.lazalazarevic.rs/", "_blank");
+	});
+	viseDetaljaButton.addEventListener("click", () => {
+		naslovPopupa.textContent = "U pripremi...";
+		if (buttonContainer.contains(buttonYes)) {
+			buttonContainer.removeChild(buttonYes);
+		}
+		if (buttonContainer.contains(buttonNo)) {
+			buttonContainer.removeChild(buttonNo);
+		}
+	});
 }
-
 viseDetaljaButton
 	? viseDetaljaButton.addEventListener("click", () => {
-			showPopup(true);
+			showPopup();
 	  })
 	: null;
-
-true ? "uradi NEsto" : "Nemoj nista";
-
-if (window.location.pathname === contactPathName) {
-	ime = document.getElementById("ime").value;
-	email = document.getElementById("email").value;
-	naslov = document.getElementById("naslov").value;
-	poruka = document.getElementById("poruka").value;
-}
-
-setTimeout(() => {
-	showPopup(false);
-}, 3000);
+setTimeout(showPopup, 3000);
 
 footer.textContent = `© ${trenutnaGodina} Požega`;
 
@@ -126,33 +79,5 @@ function otvoriMenu() {
 		closeButton.classList.add("showCloseButton");
 	}
 }
-
-function onInputChange(e) {
-	const value = e.target.value;
-	submitButton.disabled = false;
-	if (value) {
-		ime = value;
-	}
-}
-
-function saveData() {
-	if (ime && email && naslov && poruka) {
-		formData.ime = ime;
-		formData.email = email;
-		formData.naslov = naslov;
-		formData.poruka = poruka;
-		submitButton.disabled = false;
-		alert("Pitanje je poslato.");
-	} else {
-		alert("Molimo vas da popunite sva polja forme.");
-		isDisabled = true;
-		return;
-	}
-}
-
 hamburger.addEventListener("click", otvoriMenu);
 closeButton.addEventListener("click", otvoriMenu);
-
-let brojedasda = "4";
-console.log(brojedasda, typeof brojedasda);
-console.log(+brojedasda, typeof +brojedasda);
