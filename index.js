@@ -23,6 +23,24 @@ const buttonYes = document.createElement("button");
 buttonYes.textContent = "Da";
 const buttonNo = document.createElement("button");
 buttonNo.textContent = "Ne";
+<<<<<<< HEAD:index.js
+
+function showPopup() {
+    
+        if (!popupWindow.contains(buttonContainer)) {
+            popupWindow.appendChild(buttonContainer)
+        } 
+        naslovPopupa.textContent = "Je l' nam dobar sajt?";
+        popupWindow.style.display = "block";
+        buttonContainer.appendChild(buttonYes);
+        buttonContainer.appendChild(buttonNo);
+        buttonContainer.style.display="flex";
+        buttonContainer.style.justifyContent="space-around";
+        closePopupButton.addEventListener("click", ()=>{
+            popupWindow.style.display = "none";
+        });
+        buttonYes.addEventListener("click", () => {
+=======
 const buttons = document.getElementsByClassName("viseDetalja");
 const formData = {};
 const submitButton = document.getElementById("submitButton");
@@ -43,6 +61,7 @@ function showPopup(isClickedOnButton) {
 		if (isClickedOnButton) {
 			naslovPopupa.textContent = "U pripremi...";
 			popupWindow.style.display = "block";
+>>>>>>> f2a523498dcc032171307150f8cc62a103fd1e74:app.js
 			if (buttonContainer.contains(buttonYes)) {
 				buttonContainer.removeChild(buttonYes);
 			}
@@ -84,6 +103,14 @@ function showPopup(isClickedOnButton) {
 		closePopupButton.addEventListener("click", () => {
 			popupWindow.style.display = "none";
 		});
+<<<<<<< HEAD:index.js
+        viseDetaljaButton.addEventListener("click", () => {
+            naslovPopupa.textContent = "U pripremi...";
+            buttonContainer.removeChild(buttonYes);
+            buttonContainer.removeChild(buttonNo);
+        })
+    
+=======
 
 		for (let i = 0; i < buttons.length; i++) {
 			buttons[i].addEventListener("click", () => {
@@ -92,6 +119,7 @@ function showPopup(isClickedOnButton) {
 			});
 		}
 	}
+>>>>>>> f2a523498dcc032171307150f8cc62a103fd1e74:app.js
 }
 
 viseDetaljaButton
@@ -100,6 +128,9 @@ viseDetaljaButton
 	  })
 	: null;
 
+<<<<<<< HEAD:index.js
+setTimeout(showPopup, 3000);
+=======
 true ? "uradi NEsto" : "Nemoj nista";
 
 if (window.location.pathname === contactPathName) {
@@ -112,6 +143,7 @@ if (window.location.pathname === contactPathName) {
 setTimeout(() => {
 	showPopup(false);
 }, 3000);
+>>>>>>> f2a523498dcc032171307150f8cc62a103fd1e74:app.js
 
 footer.textContent = `© ${trenutnaGodina} Požega`;
 
@@ -127,6 +159,8 @@ function otvoriMenu() {
 	}
 }
 
+<<<<<<< HEAD:index.js
+=======
 function onInputChange(e) {
 	const value = e.target.value;
 	submitButton.disabled = false;
@@ -150,6 +184,7 @@ function saveData() {
 	}
 }
 
+>>>>>>> f2a523498dcc032171307150f8cc62a103fd1e74:app.js
 hamburger.addEventListener("click", otvoriMenu);
 closeButton.addEventListener("click", otvoriMenu);
 
