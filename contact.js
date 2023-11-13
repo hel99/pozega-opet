@@ -46,6 +46,21 @@ function otvoriMenu() {
 	}
 }
 
+function showMessage(poruka) {
+	document.getElementById("porukaAlert").textContent = poruka;
+}
+
+function checkEmptyField(value, fieldName) {
+	const errorMessage = document.getElementById(`${fieldName}Error`);
+	if (value.trim() === "") {
+	  errorMessage.textContent = "Polje ne može biti prazno.";
+	  return false;
+	} else {
+	  errorMessage.textContent = "";
+	  return true;
+	}
+  }
+
 async function handleSubmit(e) {
 	e.preventDefault();
 
@@ -53,6 +68,11 @@ async function handleSubmit(e) {
 	const email = document.getElementById("email").value;
 	const naslov = document.getElementById("naslovInput").value;
 	const poruka = document.getElementById("poruka").value;
+
+	const isImeValid = checkEmptyField(ime, "ime");
+  	const isEmailValid = checkEmptyField(email, "email");
+  	const isNaslovValid = checkEmptyField(naslov, "naslov");
+  	const isPorukaValid = checkEmptyField(poruka, "poruka");
 
 	if (ime && email && naslov && poruka) {
 		const formData = new FormData();
@@ -73,23 +93,23 @@ async function handleSubmit(e) {
 		})
 			.then((response) => {
 				if (response.ok) {
-					console.log("Thanks for your submission!");
+					showMessage("Hvala na postavljenom pitanju!");
 					forma.reset();
 				} else {
 					response.json().then((data) => {
 						if (Object.hasOwn(data, "errors")) {
 							console.log(data);
 						} else {
-							alert("Oops! There was a problem submitting your form");
+							showMessage("Postoji neki problem.");
 						}
 					});
 				}
 			})
 			.catch((error) => {
-				alert("Oops! There was a problem submitting your form");
+				showMessage("Postoji neki problem.");
 			});
-	} else {
-		alert("Please fill out all fields.");
+	} else {	
+		showMessage("Popunite sva polja.");
 	}
 }
 forma.addEventListener("submit", handleSubmit);

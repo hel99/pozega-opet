@@ -65,9 +65,10 @@
 						size="50"
 						autocomplete="off"
 					/>
+					<p id="imeError" class="error-message"></p>
 					<label for="email">Email adresa:</label>
 					<input type="text" id="email" name="email" size="50" />
-
+					<p id="emailError" class="error-message"></p>
 					<label for="naslovInput">Naslov:</label>
 					<input
 						type="text"
@@ -75,12 +76,14 @@
 						name="naslovInput"
 						size="50"
 					/>
-
+					<p id="naslovError" class="error-message"></p>
 					<label for="poruka">Poruka:</label>
 					<input type="poruka" id="poruka" name="poruka" size="50" />
-
+					<p id="porukaError" class="error-message"></p>
 					<button type="submit" id="submitButton">Pošalji</button>
+					
 				</form>
+				<p id="porukaAlert"></p>
 			</main>
 		</div>
 		<footer>
