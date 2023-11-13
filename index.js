@@ -11,11 +11,13 @@ fetch("https://jsonplaceholder.typicode.com/todos/1").then((response) => {
 const menu = document.querySelector(".menu");
 const hamburger = document.querySelector(".hamburger");
 const closeButton = document.querySelector(".closeButton");
+
 const footer = document.querySelector("footer");
 let trenutnaGodina = new Date().getFullYear();
 const popupWindow = document.getElementById("popupWindow");
 const closePopupButton = document.getElementById("closePopupButton");
 const viseDetaljaButton = document.getElementById("viseDetalja");
+
 let buttonContainer = document.getElementById("buttonContainer");
 buttonContainer ? buttonContainer.classList.add("flex-container") : null;
 let naslovPopupa = document.getElementById("naslov");
@@ -23,6 +25,7 @@ const buttonYes = document.createElement("button");
 buttonYes.textContent = "Da";
 const buttonNo = document.createElement("button");
 buttonNo.textContent = "Ne";
+
 function showPopup() {
 	if (!popupWindow.contains(buttonContainer)) {
 		popupWindow.appendChild(buttonContainer);
@@ -59,11 +62,13 @@ function showPopup() {
 		}
 	});
 }
+
 viseDetaljaButton
 	? viseDetaljaButton.addEventListener("click", () => {
 			showPopup();
 	  })
 	: null;
+
 setTimeout(showPopup, 3000);
 
 footer.textContent = `© ${trenutnaGodina} Požega`;

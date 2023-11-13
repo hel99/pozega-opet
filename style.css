@@ -292,3 +292,12 @@ footer{
 .showCloseButton {
 	display: block;
 }
+
+#porukaAlert {
+	font-size: xx-large;
+}
+
+.error-message {
+	font-size: smaller;
+	color: #c73e11;
+}
