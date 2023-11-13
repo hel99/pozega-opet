@@ -1,9 +1,9 @@
-fetch("https://jsonplaceholder.typicode.com/todos/1").then(response =>{
-if(response.ok){
-    return response.json();
-} else{
-    throw new Error("interner konekcija nije u redu");
-}
+fetch("https://jsonplaceholder.typicode.com/todos/1").then((response) => {
+	if (response.ok) {
+		return response.json();
+	} else {
+		throw new Error("interner konekcija nije u redu");
+	}
 });
 
 const menu = document.querySelector(".menu");
@@ -12,7 +12,7 @@ const closeButton = document.querySelector(".closeButton");
 const footer = document.querySelector("footer");
 let trenutnaGodina = new Date().getFullYear();
 
-const formData={};
+const formData = {};
 const submitButton = document.getElementById("submitButton");
 let isDisabled = true;
 let ime = "";
@@ -26,40 +26,72 @@ poruka = document.getElementById("poruka").value;
 
 footer.textContent = `© ${trenutnaGodina} Požega`;
 
+const imeInput = document.getElementById("ime");
+const forma = document.getElementById("formaBrate");
+
+imeInput.addEventListener("input", (event) => {
+	const value = event.target.value;
+	console.log(value);
+});
+
 function otvoriMenu() {
-    if (menu.classList.contains("showMenu")) {
-        menu.classList.remove("showMenu");
-        hamburger.classList.remove("hideHamburger");
-        closeButton.classList.remove("showCloseButton");
-    } else {
-        menu.classList.add("showMenu");
-        hamburger.classList.add("hideHamburger");
-        closeButton.classList.add("showCloseButton");
-    }
+	if (menu.classList.contains("showMenu")) {
+		menu.classList.remove("showMenu");
+		hamburger.classList.remove("hideHamburger");
+		closeButton.classList.remove("showCloseButton");
+	} else {
+		menu.classList.add("showMenu");
+		hamburger.classList.add("hideHamburger");
+		closeButton.classList.add("showCloseButton");
+	}
 }
 
-function onInputChange(e){
-    const value = e.target.value;
-    submitButton.disabled=false;
-    if(value){
-        ime = value;
-    }
-}
+async function handleSubmit(e) {
+	e.preventDefault();
 
-function saveData(){
-    if(ime && email && naslov && poruka){
-        formData.ime = ime;
-        formData.email = email;
-        formData.naslov = naslov;
-        formData.poruka = poruka;
-        submitButton.disabled=false;
-        alert("Pitanje je poslato.");
-    } else {
-        alert("Molimo vas da popunite sva polja forme.");
-        isDisabled=true;
-        return;
-    }
-}
+	const ime = document.getElementById("ime").value;
+	const email = document.getElementById("email").value;
+	const naslov = document.getElementById("naslovInput").value;
+	const poruka = document.getElementById("poruka").value;
 
+	if (ime && email && naslov && poruka) {
+		const formData = new FormData();
+		formData.append("ime", ime);
+		formData.append("email", email);
+		formData.append("naslov", naslov);
+		formData.append("poruka", poruka);
+
+		const submitButton = document.getElementById("submitButton");
+		submitButton.disabled = true;
+
+		fetch(e.target.action, {
+			method: "POST",
+			body: formData,
+			headers: {
+				Accept: "application/json",
+			},
+		})
+			.then((response) => {
+				if (response.ok) {
+					console.log("Thanks for your submission!");
+					forma.reset();
+				} else {
+					response.json().then((data) => {
+						if (Object.hasOwn(data, "errors")) {
+							console.log(data);
+						} else {
+							alert("Oops! There was a problem submitting your form");
+						}
+					});
+				}
+			})
+			.catch((error) => {
+				alert("Oops! There was a problem submitting your form");
+			});
+	} else {
+		alert("Please fill out all fields.");
+	}
+}
+forma.addEventListener("submit", handleSubmit);
 hamburger.addEventListener("click", otvoriMenu);
 closeButton.addEventListener("click", otvoriMenu);
