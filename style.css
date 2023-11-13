@@ -86,6 +86,7 @@ footer{
 
 .forma{
 	padding-left: 35%;
+	padding-right: 35%;
 	padding-top: 50px;
 }
 
@@ -232,11 +233,16 @@ footer{
     	padding: 0;
     	justify-content: center;
     	height: 100vh;
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+
+	body {
 		width: 100%;
 	}
 
-	.input{
-		width: 100%;
+	input{
+		max-width: 100%;
 	}
 
 	.container-pocetna h1 {
