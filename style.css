@@ -190,6 +190,10 @@ footer{
 		width: 100%;
 	}
 
+	main{
+		height: 150vh;
+	}
+
 	.hamburger {
 		z-index: 3;
 		display: block;

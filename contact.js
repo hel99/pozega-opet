@@ -27,13 +27,42 @@ poruka = document.getElementById("poruka").value;
 footer.textContent = `© ${trenutnaGodina} Požega`;
 
 const imeInput = document.getElementById("ime");
+const emailInput = document.getElementById("email");
+const naslovInput = document.getElementById("naslov");
+const porukaInput = document.getElementById("poruka");
 const forma = document.getElementById("formaBrate");
 
 imeInput.addEventListener("input", (event) => {
 	const value = event.target.value;
 	console.log(value);
+	if(value.length===0){
+		showMessage("Molimo popunite polje za ime.");
+	}else showMessage("");
 });
 
+emailInput.addEventListener("input", (event) => {
+	const value = event.target.value;
+	console.log(value);
+	if(value.length===0){
+		showMessage("Molimo popunite polje za email.");
+	}else showMessage("");
+});
+
+naslovInput.addEventListener("input", (event) => {
+	const value = event.target.value;
+	console.log(value);
+	if(value.length===0){
+		showMessage("Molimo popunite polje za naslov.");
+	}else showMessage("");
+});
+
+porukaInput.addEventListener("input", (event) => {
+	const value = event.target.value;
+	console.log(value);
+	if(value.length===0){
+		showMessage("Molimo popunite polje za poruku.");
+	}else showMessage("");
+});
 function otvoriMenu() {
 	if (menu.classList.contains("showMenu")) {
 		menu.classList.remove("showMenu");
@@ -52,7 +81,7 @@ function showMessage(poruka) {
 
 function checkEmptyField(value, fieldName) {
 	const errorMessage = document.getElementById(`${fieldName}Error`);
-	if (value.trim() === "") {
+	if (value.length===0) {
 	  errorMessage.textContent = "Polje ne može biti prazno.";
 	  return false;
 	} else {
@@ -63,6 +92,7 @@ function checkEmptyField(value, fieldName) {
 
 async function handleSubmit(e) {
 	e.preventDefault();
+	showMessage("");
 
 	const ime = document.getElementById("ime").value;
 	const email = document.getElementById("email").value;
@@ -82,7 +112,6 @@ async function handleSubmit(e) {
 		formData.append("poruka", poruka);
 
 		const submitButton = document.getElementById("submitButton");
-		submitButton.disabled = true;
 
 		fetch(e.target.action, {
 			method: "POST",
@@ -98,7 +127,8 @@ async function handleSubmit(e) {
 				} else {
 					response.json().then((data) => {
 						if (Object.hasOwn(data, "errors")) {
-							console.log(data);
+							showMessage(data.error);
+							throw new Error(data.error);
 						} else {
 							showMessage("Postoji neki problem.");
 						}
@@ -106,7 +136,7 @@ async function handleSubmit(e) {
 				}
 			})
 			.catch((error) => {
-				showMessage("Postoji neki problem.");
+				showMessage(error.error);
 			});
 	} else {	
 		showMessage("Popunite sva polja.");
