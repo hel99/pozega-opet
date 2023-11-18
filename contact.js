@@ -28,40 +28,32 @@ footer.textContent = `© ${trenutnaGodina} Požega`;
 
 const imeInput = document.getElementById("ime");
 const emailInput = document.getElementById("email");
-const naslovInput = document.getElementById("naslov");
+const naslovInput = document.getElementById("naslovInput");
 const porukaInput = document.getElementById("poruka");
 const forma = document.getElementById("formaBrate");
 
 imeInput.addEventListener("input", (event) => {
 	const value = event.target.value;
 	console.log(value);
-	if(value.length===0){
-		showMessage("Molimo popunite polje za ime.");
-	}else showMessage("");
+	checkEmptyField(value, "ime");
 });
 
 emailInput.addEventListener("input", (event) => {
 	const value = event.target.value;
 	console.log(value);
-	if(value.length===0){
-		showMessage("Molimo popunite polje za email.");
-	}else showMessage("");
+	checkEmptyField(value, "email");
 });
 
 naslovInput.addEventListener("input", (event) => {
 	const value = event.target.value;
 	console.log(value);
-	if(value.length===0){
-		showMessage("Molimo popunite polje za naslov.");
-	}else showMessage("");
+	checkEmptyField(value, "naslov");
 });
 
 porukaInput.addEventListener("input", (event) => {
 	const value = event.target.value;
 	console.log(value);
-	if(value.length===0){
-		showMessage("Molimo popunite polje za poruku.");
-	}else showMessage("");
+	checkEmptyField(value, "poruka");
 });
 function otvoriMenu() {
 	if (menu.classList.contains("showMenu")) {
@@ -81,14 +73,14 @@ function showMessage(poruka) {
 
 function checkEmptyField(value, fieldName) {
 	const errorMessage = document.getElementById(`${fieldName}Error`);
-	if (value.length===0) {
-	  errorMessage.textContent = "Polje ne može biti prazno.";
-	  return false;
+	if (value.length === 0) {
+		errorMessage.textContent = "Polje ne može biti prazno.";
+		return false;
 	} else {
-	  errorMessage.textContent = "";
-	  return true;
+		errorMessage.textContent = "";
+		return true;
 	}
-  }
+}
 
 async function handleSubmit(e) {
 	e.preventDefault();
@@ -100,11 +92,11 @@ async function handleSubmit(e) {
 	const poruka = document.getElementById("poruka").value;
 
 	const isImeValid = checkEmptyField(ime, "ime");
-  	const isEmailValid = checkEmptyField(email, "email");
-  	const isNaslovValid = checkEmptyField(naslov, "naslov");
-  	const isPorukaValid = checkEmptyField(poruka, "poruka");
+	const isEmailValid = checkEmptyField(email, "email");
+	const isNaslovValid = checkEmptyField(naslov, "naslov");
+	const isPorukaValid = checkEmptyField(poruka, "poruka");
 
-	if (ime && email && naslov && poruka) {
+	if (isImeValid && isEmailValid && isNaslovValid && isPorukaValid) {
 		const formData = new FormData();
 		formData.append("ime", ime);
 		formData.append("email", email);
@@ -138,7 +130,7 @@ async function handleSubmit(e) {
 			.catch((error) => {
 				showMessage(error.error);
 			});
-	} else {	
+	} else {
 		showMessage("Popunite sva polja.");
 	}
 }
